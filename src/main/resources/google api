@@ -1,0 +1,14 @@
+1) GET /o/oauth2/auth?client_id=915663958263-56qjftrors9unv3ipb1sl4bjtjn1u1h5.apps.googleusercontent.com&amp;response_type=code&amp;scope=openid%20email&amp;
+redirect_uri=http://localhost:8080/login/oauth2/code/google&amp;state=abc HTTP/1.1
+Host: accounts.google.com
+
+
+2) POST /oauth2/v4/token HTTP/1.1
+Host: www.googleapis.com
+Content-Type: application/x-www-form-urlencoded
+
+code=4/AADxrOWMCbRogfCaMPfdLzvl_68wb3cUdBwa2EMiVcuQI_E6rUJWFs6bGnYvY6iDNR2qA1JtRPg9rnXVuWuKp3c&client_id=915663958263-56qjftrors9unv3ipb1sl4bjtjn1u1h5.apps.googleusercontent.com&client_secret=O0xHVqrXRQW9DiaHfWU_WPKE&redirect_uri=http://localhost:8080/login/oauth2/code/google&grant_type=authorization_code&access_type=offline
+
+3) https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=ya29
+.GmDeBZ0viVqrVhln6vy82mTvI3aUVidU4zQLYgAG5qVFSTFJdE1uFphm8HRlIkBNILIp0GMkk6huMffzU6MCF4-RRrGlib4NHkQhlbTrhme5v_nlCUOBZ2aMNY-bg4CvnPQ
+
