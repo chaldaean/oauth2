@@ -13,6 +13,7 @@ import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.client.filter.OAuth2ClientAuthenticationProcessingFilter;
 import org.springframework.security.oauth2.client.filter.OAuth2ClientContextFilter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
+import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
@@ -29,6 +30,9 @@ public class AuthorizationServerConfiguration extends WebSecurityConfigurerAdapt
 
     @Autowired
     OAuth2ClientContext oauth2ClientContext;
+
+    @Autowired
+    DefaultTokenServices defaultTokenServices;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -77,7 +81,7 @@ public class AuthorizationServerConfiguration extends WebSecurityConfigurerAdapt
         tokenServices.setRestTemplate(template);
         filter.setTokenServices(tokenServices);
 
-        filter.setAuthenticationSuccessHandler(new GoogleAuthenticationSuccessHandler(tokenServices));
+        filter.setAuthenticationSuccessHandler(new GoogleAuthenticationSuccessHandler(defaultTokenServices));
         return filter;
     }
 }
